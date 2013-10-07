@@ -5,8 +5,6 @@
 #
 set -e
 
-declare chroot_dir=$1
-
 chroot $1 $SHELL -ex <<'EOS'
   yum install -y \
     qemu-kvm qemu-img \

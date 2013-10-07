@@ -5,9 +5,7 @@
 #
 set -e
 
-declare chroot_dir=$1
-
-configure_sudo_sudoers ${chroot_dir} jenkins NOPASSWD:
+configure_sudo_sudoers $1 jenkins NOPASSWD:
 
 chroot $1 $SHELL -ex <<'EOS'
   usermod -s /bin/bash jenkins
