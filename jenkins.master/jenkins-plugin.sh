@@ -5,8 +5,6 @@
 #
 set -e
 
-declare chroot_dir=$1
-
 chroot $1 $SHELL -ex <<'EOS'
   [[ -d /var/lib/jenkins/plugins ]] || mkdir -p /var/lib/jenkins/plugins
   # install git plugin

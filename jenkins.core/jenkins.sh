@@ -5,8 +5,6 @@
 #
 set -e
 
-declare chroot_dir=$1
-
 chroot $1 $SHELL -ex <<'EOS'
   curl -fSkL http://pkg.jenkins-ci.org/redhat/jenkins.repo -o /etc/yum.repos.d/jenkins.repo
   rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
