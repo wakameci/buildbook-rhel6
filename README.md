@@ -1,5 +1,5 @@
-Buildbook for RHEL
-==================
+Buildbook for RHEL6
+===================
 
 xexecscript set for [vmbuilder](https://github.com/hansode/vmbuilder)
 
