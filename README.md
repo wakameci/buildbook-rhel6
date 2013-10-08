@@ -1,7 +1,7 @@
 Buildbook for RHEL6
 ===================
 
-xexecscript/copy.txt set for [vmbuilder](https://github.com/hansode/vmbuilder)
+xexecscript/copy.txt/postcopy.txt set for [vmbuilder](https://github.com/hansode/vmbuilder)
 
 Requirements
 ------------
@@ -14,8 +14,8 @@ xexecscript(*.sh)
 Run SCRIPT after distro installation finishes.
 Script will be called with the guest's chroot as first argument, so you can use `chroot $1 <cmd>` to run code in the virtual machine.
 
-copy.txt
---------
+copy.txt/postcopy.txt
+---------------------
 
 Read 'source dest' lines from FILE, copying  source  files  from host to dest in the guest's file system.
 
