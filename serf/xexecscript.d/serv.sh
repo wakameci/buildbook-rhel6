@@ -15,7 +15,12 @@ run_yum ${chroot_dir} install wget unzip
 chroot $1 $SHELL <<'EOS'
   # Download and install Serf
   cd /tmp
-  until wget -O serf.zip https://dl.bintray.com/mitchellh/serf/0.1.1_linux_amd64.zip; do
+  case "$(arch)" in
+  x86_64) arch=amd64 ;;
+    i*86) arch=386   ;;
+  esac
+
+  until wget -O serf.zip https://dl.bintray.com/mitchellh/serf/0.2.0_linux_${arch}.zip; do
     sleep 1
   done
   unzip serf.zip
