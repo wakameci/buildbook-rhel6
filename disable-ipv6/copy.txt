@@ -1,0 +1,2 @@
+guestroot/etc/modprobe.d/disable-ipv6.conf /etc/modprobe.d/disable-ipv6.conf mode=644
+guestroot/etc/sysconfig/network /etc/sysconfig/network mode=644
