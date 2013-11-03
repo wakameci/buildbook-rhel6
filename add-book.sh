@@ -9,7 +9,10 @@ declare abs_dirname=${BASH_SOURCE[0]%/*}/
 declare name=$1
 
 [[ -n ${name} ]] || {
-  echo "$ add-book.sh <name>" >&2
+  cat <<-EOS >&2
+	USAGE
+	  $ add-book.sh <name>
+	EOS
   exit 1
 }
 
