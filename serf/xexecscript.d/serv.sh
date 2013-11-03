@@ -10,7 +10,9 @@ set -e
 
 declare chroot_dir=$1
 
-run_yum ${chroot_dir} install wget unzip
+chroot $1 $SHELL -ex <<'EOS'
+  yum install --disablerepo=updates -y wget unzip
+EOS
 
 chroot $1 $SHELL <<'EOS'
   # Download and install Serf
