@@ -27,5 +27,5 @@ esac
 
 chroot $1 $SHELL -ex <<EOS
   yum repolist
-  yum install -y td-agent${td_agent_version}
+  yum install --disablerepo=updates -y td-agent${td_agent_version}
 EOS

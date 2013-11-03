@@ -6,5 +6,5 @@
 set -e
 
 chroot $1 $SHELL -ex <<'EOS'
-  yum install -y ucarp
+  yum install --disablerepo=updates -y ucarp
 EOS
