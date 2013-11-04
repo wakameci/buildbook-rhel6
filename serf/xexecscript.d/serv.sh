@@ -11,7 +11,7 @@ set -e
 declare chroot_dir=$1
 
 chroot $1 $SHELL -ex <<'EOS'
-  yum install --disablerepo=updates -y wget unzip
+  yum install --disablerepo=updates -y curl unzip
 EOS
 
 chroot $1 $SHELL <<'EOS'
@@ -22,7 +22,7 @@ chroot $1 $SHELL <<'EOS'
     i*86) arch=386   ;;
   esac
 
-  until wget -O serf.zip https://dl.bintray.com/mitchellh/serf/0.2.0_linux_${arch}.zip; do
+  until curl -fsSkL -o serf.zip https://dl.bintray.com/mitchellh/serf/0.2.0_linux_${arch}.zip; do
     sleep 1
   done
   unzip serf.zip
