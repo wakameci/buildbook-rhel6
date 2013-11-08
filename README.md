@@ -19,6 +19,11 @@ copy.txt/postcopy.txt
 
 Read 'source dest' lines from FILE, copying  source  files  from host to dest in the guest's file system.
 
+Links
+-----
+
++ [buidbook-rhel6-test](https://github.com/hansode/buildbook-rhel6-test)
+
 License
 -------
 
