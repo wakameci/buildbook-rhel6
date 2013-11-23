@@ -35,8 +35,8 @@ function install_menu_lst_kernel_ml_aufs() {
   cat <<-_EOS_ >> ${chroot_dir}/boot/grub/grub.conf
 	title ${grub_title}
 	        root (hd0,0)
-	        kernel ${bootdir_path}/vmlinuz-${version} ro root=${root_dev} rd_NO_LUKS rd_NO_LVM LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM selinux=${selinux:-0}
-	        initrd ${bootdir_path}/initramfs-${version}.img
+	        kernel ${bootdir_path}/vmlinuz-${version}.${basearch} ro root=${root_dev} rd_NO_LUKS rd_NO_LVM LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM selinux=${selinux:-0}
+	        initrd ${bootdir_path}/initramfs-${version}.${basearch}.img
 	_EOS_
 
   # set default kernel
