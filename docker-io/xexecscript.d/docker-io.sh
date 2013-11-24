@@ -55,3 +55,7 @@ chroot $1 $SHELL -ex <<'EOS'
 EOS
 
 install_menu_lst_kernel_ml_aufs $1
+
+chroot $1 $SHELL -ex <<'EOS'
+  echo "none                    /sys/fs/cgroup          cgroup  defaults        0 0" >> /etc/fstab
+EOS
