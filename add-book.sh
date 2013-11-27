@@ -37,6 +37,7 @@ set -e
 declare chroot_dir=$1
 
 chroot $1 $SHELL -ex <<'EOS'
+ #yum install --disablerepo=updates -y :name
 EOS
 TEMPLATE
 chmod +x xexecscript.d/${name}.sh
