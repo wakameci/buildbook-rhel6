@@ -1,0 +1,1 @@
+guestroot/etc/yum.repos.d/sensu.repo /etc/yum.repos.d/sensu.repo mode=644
