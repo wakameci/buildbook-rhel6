@@ -10,8 +10,6 @@ declare chroot_dir=$1
 function install_menu_lst_kernel_ml_aufs() {
   local chroot_dir=$1
   [[ -d "${chroot_dir}"                     ]] || { echo "[ERROR] directory not found: ${chroot_dir} (${BASH_SOURCE[0]##*/}:${LINENO})" >&2; return 1; }
-  [[ -a "${chroot_dir}/etc/fstab"           ]] || { echo "[WARN] file not found: ${chroot_dir}/etc/fstab (${BASH_SOURCE[0]##*/}:${LINENO})" >&2; return 0; }
-  [[ -a "${chroot_dir}/boot/grub/grub.conf" ]] || { echo "[ERROR] file not found: ${chroot_dir}/boot/grub/grub.conf (${BASH_SOURCE[0]##*/}:${LINENO})" >&2; return 1; }
   local version=$(chroot ${chroot_dir} rpm -q --qf '%{Version}-%{Release}' kernel-ml-aufs)
   [[ -n "${version}" ]] || { echo "[ERROR] kernel-ml-aufs not found (${BASH_SOURCE[0]##*/}:${LINENO})" &2; return 1; }
 
