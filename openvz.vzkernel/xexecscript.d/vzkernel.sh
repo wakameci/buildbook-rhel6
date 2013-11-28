@@ -19,7 +19,8 @@ chroot $1 $SHELL -ex <<'EOS'
 EOS
 
 chroot $1 $SHELL -ex <<'EOS'
-  version=$(rpm -q --qf '%{Version}-%{Release}' vzkernel)
+  kernel_name=vzkernel
+  version=$(rpm -q --qf '%{Version}-%{Release}' ${kernel_name})
 
   bootdir_path=
   root_dev=$(awk '$2 == "/boot" {print $1}' /etc/fstab)
@@ -30,7 +31,7 @@ chroot $1 $SHELL -ex <<'EOS'
     bootdir_path=/boot
   fi
 
-  grub_title="OpenVZ (${version})"
+  grub_title="${kernel_name} (${version})"
   cat <<-_EOS_ >> /boot/grub/grub.conf
 	title ${grub_title}
 	        root (hd0,0)
