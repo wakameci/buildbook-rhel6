@@ -7,7 +7,12 @@ set -e
 
 declare chroot_dir=$1
 
-function install_menu_lst_kernel_ml_aufs() {
+chroot $1 $SHELL -ex <<'EOS'
+  yum install --disablerepo=updates -y docker-io
+EOS
+
+# install_menu_lst_kernel_ml_aufs $1
+chroot $1 $SHELL -ex <<'EOS'
   version=$(rpm -q --qf '%{Version}-%{Release}' kernel-ml-aufs)
   [[ -n "${version}" ]] || { echo "[ERROR] kernel-ml-aufs not found (${BASH_SOURCE[0]##*/}:${LINENO})" &2; return 1; }
 
@@ -37,13 +42,7 @@ function install_menu_lst_kernel_ml_aufs() {
   }
   sed -i "s,^default=.*,default=${menu_offset}," /boot/grub/grub.conf
   cat /boot/grub/grub.conf
-}
-
-chroot $1 $SHELL -ex <<'EOS'
-  yum install --disablerepo=updates -y docker-io
 EOS
-
-install_menu_lst_kernel_ml_aufs $1
 
 chroot $1 $SHELL -ex <<'EOS'
   echo "none                    /sys/fs/cgroup          cgroup  defaults        0 0" >> /etc/fstab
