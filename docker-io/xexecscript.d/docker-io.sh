@@ -11,7 +11,7 @@ function kernel_ml_aufs_version() {
   local chroot_dir=$1
   [[ -d "${chroot_dir}" ]] || { echo "[ERROR] directory not found: ${chroot_dir} (${BASH_SOURCE[0]##*/}:${LINENO})" >&2; return 1; }
 
-  run_in_target ${chroot_dir} rpm -q --qf '%{Version}-%{Release}' kernel-ml-aufs
+  chroot ${chroot_dir} rpm -q --qf '%{Version}-%{Release}' kernel-ml-aufs
 }
 
 function install_menu_lst_kernel_ml_aufs() {
