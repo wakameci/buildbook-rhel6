@@ -8,7 +8,7 @@ set -e
 declare chroot_dir=$1
 
 chroot $1 $SHELL -ex <<'EOS'
-  until curl -fsSkL http://download.openvz.org/openvz.repo -o /etc/yum.repos.d/openvz.repo; do
+  until curl -fsSkL -o /etc/yum.repos.d/openvz.repo http://download.openvz.org/openvz.repo; do
     sleep 1
   done
 
