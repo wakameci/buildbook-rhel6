@@ -11,10 +11,8 @@ chroot $1 $SHELL -ex <<'EOS'
   yum install --disablerepo=updates -y docker-io
 EOS
 
-# install_menu_lst_kernel_ml_aufs $1
 chroot $1 $SHELL -ex <<'EOS'
   version=$(rpm -q --qf '%{Version}-%{Release}' kernel-ml-aufs)
-  [[ -n "${version}" ]] || { echo "[ERROR] kernel-ml-aufs not found (${BASH_SOURCE[0]##*/}:${LINENO})" &2; return 1; }
 
   bootdir_path=
   root_dev=$(awk '$2 == "/boot" {print $1}' /etc/fstab)
