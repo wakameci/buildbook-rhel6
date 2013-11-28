@@ -12,6 +12,11 @@ chroot $1 $SHELL -ex <<'EOS'
 EOS
 
 chroot $1 $SHELL -ex <<'EOS'
+  case "$(arch)" in
+  i[3-6]86) basearch=i386   ;;
+    x86_64) basearch=x86_64 ;;
+  esac
+
   version=$(rpm -q --qf '%{Version}-%{Release}' kernel-ml-aufs)
 
   bootdir_path=
