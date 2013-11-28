@@ -1,0 +1,2 @@
+guestroot/etc/default/docker   /etc/default/docker   mode=644
+guestroot/etc/init/docker.conf /etc/init/docker.conf mode=644
