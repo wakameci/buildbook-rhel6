@@ -15,5 +15,5 @@ chroot $1 $SHELL -ex <<'EOS'
   fi
 
   rpm -Uvh http://nginx.org/packages/${distro_name}/6/noarch/RPMS/nginx-release-${distro_name}-6-0.el6.ngx.noarch.rpm
-  yum install --disablerepo=updates -y install nginx
+  yum install --disablerepo=updates -y nginx
 EOS
