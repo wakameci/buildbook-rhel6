@@ -8,6 +8,8 @@ set -e
 declare chroot_dir=$1
 
 chroot $1 $SHELL -ex <<'EOS'
+  yum install --disablerepo=updates -y bridge-utils
+
   until curl -fsSkL -o /usr/local/bin/pipework https://raw.github.com/jpetazzo/pipework/master/pipework; do
     sleep 1
   done
