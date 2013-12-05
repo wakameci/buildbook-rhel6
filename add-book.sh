@@ -18,6 +18,7 @@ declare name=$1
 
 
 [[ -d ${name} ]] || mkdir ${name}
+(
 cd ${name}
 
 : > copy.txt
@@ -41,5 +42,7 @@ chroot $1 $SHELL -ex <<'EOS'
 EOS
 TEMPLATE
 chmod +x xexecscript.d/${name}.sh
+)
 
 echo "generated => ${name}"
+find ${name}
