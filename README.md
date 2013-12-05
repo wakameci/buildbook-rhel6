@@ -19,6 +19,38 @@ copy.txt/postcopy.txt
 
 Read 'source dest' lines from FILE, copying  source  files  from host to dest in the guest's file system.
 
+Getting Started
+---------------
+
+Add a new book.
+
+```
+$ ./add-book.sh untitled
+generated => untitled
+untitled
+untitled/xexecscript.d
+untitled/xexecscript.d/untitled.sh
+untitled/copy.txt
+untitled/guestroot
+```
+
+untitled/xexecscript.d/untitled.sh is a sample execscript.
+
+```
+#!/bin/bash
+#
+# requires:
+#  bash
+#
+set -e
+
+declare chroot_dir=$1
+
+chroot $1 $SHELL -ex <<'EOS'
+ #yum install --disablerepo=updates -y :name
+EOS
+```
+
 Links
 -----
 
