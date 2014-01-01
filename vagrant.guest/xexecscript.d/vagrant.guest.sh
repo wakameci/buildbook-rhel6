@@ -12,8 +12,8 @@ chroot $1 $SHELL -ex <<'EOS'
   user_group=${user_name}
   user_home=/home/${user_name}
 
-  groupadd    ${user_group} 
-  useradd  -g ${user_group} -d ${user_home} -s /bin/bash -m ${user_name}
+  getent group  ${user_group} >/dev/null || groupadd    ${user_group}
+  getent passwd ${user_name}  >/dev/null || useradd  -g ${user_group} -d ${user_home} -s /bin/bash -m ${user_name}
 
   egrep -q ^umask ${user_home}/.bashrc || {
     echo umask 022 >> ${user_home}/.bashrc
@@ -34,4 +34,7 @@ chroot $1 $SHELL -ex <<'EOS'
   echo ${user_name}:${user_name} | chpasswd
 
   chown -R ${user_group}:${user_name} ${user_ssh_dir}
+
+  sed -i "s/^\(^Defaults\s*requiretty\).*/# \1/" /etc/sudoers
+  egrep ^${user_name} -w /etc/sudoers || { echo "${user_name} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers; }
 EOS
