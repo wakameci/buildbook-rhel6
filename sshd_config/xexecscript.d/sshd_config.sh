@@ -44,5 +44,6 @@ done < <(cat <<-EOS | egrep -v '^#|^$'
 	# Others
 	StrictModes   no
 	X11Forwarding no
+	UseDNS        no
 	EOS
 	)
