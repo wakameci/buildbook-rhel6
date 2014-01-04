@@ -35,4 +35,5 @@ chroot $1 $SHELL -ex <<'EOS'
  #cat /var/log/vboxadd-install.log
 
   umount ${mnt_path}
+  rm ${iso_path}
 EOS
