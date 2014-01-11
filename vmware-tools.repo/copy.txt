@@ -1,0 +1,1 @@
+guestroot/etc/yum.repos.d/vmware-tools.repo /etc/yum.repos.d/vmware-tools.repo mode=644
