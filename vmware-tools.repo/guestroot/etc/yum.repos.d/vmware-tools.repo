@@ -1,0 +1,5 @@
+[vmware-tools]
+name=VMware Tools
+baseurl=http://packages.vmware.com/tools/esx/latest/rhel6/$basearch
+enabled=1
+gpgcheck=1
