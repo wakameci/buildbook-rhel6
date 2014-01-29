@@ -21,7 +21,7 @@ chroot $1 $SHELL -ex <<'EOS'
   mnt_path=/mnt
 
   mount -o loop ${iso_path} ${mnt_path}
-  yum install --disablerepo=updates -y make kernel-devel gcc perl dkms
+  yum install --disablerepo=updates -y make kernel-devel gcc perl
 
   # https://forums.virtualbox.org/viewtopic.php?f=3&t=58855
  #yum install --disablerepo=updates -y libdrm-devel
