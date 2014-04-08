@@ -42,7 +42,7 @@ done < <(cat <<-EOS | egrep -v '^#|^$'
 	PermitEmptyPasswords no
 
 	# Others
-	StrictModes   no
+	StrictModes   yes
 	X11Forwarding no
 	UseDNS        no
 	EOS
