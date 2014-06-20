@@ -26,7 +26,7 @@ chroot $1 $SHELL -ex <<'EOS'
   # make sure to directory attribute is 0700
   chmod 0700 ${user_ssh_dir}
 
-  until curl -fsSkL https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub >> ${authorized_keys_path}; do
+  until curl -fsSkL https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub >> ${authorized_keys_path}; do
     sleep 1
   done
 
