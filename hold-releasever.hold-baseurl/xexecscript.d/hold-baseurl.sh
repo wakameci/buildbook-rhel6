@@ -7,12 +7,13 @@ set -e
 
 declare chroot_dir=$1
 
-releasever=$(< ${chroot_dir}/etc/yum/vars/releasever)
-majorver=${releasever%%.*}
+if [[ -f ${chroot_dir}/etc/yum/vars/releasever ]]; then
+  releasever=$(< ${chroot_dir}/etc/yum/vars/releasever)
+  majorver=${releasever%%.*}
 
-mv ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo.saved
+  mv ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo.saved
 
-cat <<-REPO > ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo
+  cat <<-REPO > ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo
 	[base]
 	name=CentOS-\$releasever - Base
 	baseurl=http://ftp.riken.jp/Linux/centos/\$releasever/os/\$basearch/
@@ -25,3 +26,4 @@ cat <<-REPO > ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo
 	gpgcheck=1
 	gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-${majorver}
 	REPO
+fi
