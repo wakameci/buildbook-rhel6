@@ -11,7 +11,7 @@ if [[ -f ${chroot_dir}/etc/yum/vars/releasever ]]; then
   releasever=$(< ${chroot_dir}/etc/yum/vars/releasever)
   majorver=${releasever%%.*}
 
-  mv ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo.saved
+  mv ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo{,.saved}
 
   cat <<-REPO > ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo
 	[base]
