@@ -56,4 +56,5 @@ chroot $1 $SHELL -ex <<'EOS'
    ipt_recent ipt_owner ipt_REDIRECT ipt_TOS ipt_LOG ip_conntrack ipt_state iptable_nat ip_nat_ftp
   "
   sed -i "s,^IPTABLES=.*,IPTABLES=\"$(echo ${iptables_modules})\"," /etc/vz/vz.conf
+  sed -i "s,DISK_QUOTA=yes,DISK_QUOTA=no," /etc/vz/vz.conf
 EOS
