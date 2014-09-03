@@ -13,5 +13,5 @@ chroot $1 $SHELL -ex <<'EOS'
     parted kpartx \
     gcc gcc-c++ \
     rpm-build automake createrepo \
-    openssl-devel zlib-devel
+    openssl-devel zlib-devel readline-devel
 EOS
