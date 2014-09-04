@@ -7,22 +7,38 @@ set -e
 
 declare chroot_dir=$1
 
+function baseurl() {
+  local releasever=${1}
+
+  local baseurl=http://vault.centos.org
+
+  case "${releasever}" in
+    5.10 | 6.5 | 7.0.1406 )
+      baseurl=http://ftp.riken.jp/Linux/centos
+      ;;
+  esac
+
+  echo ${baseurl}
+}
+
 if [[ -f ${chroot_dir}/etc/yum/vars/releasever ]]; then
   releasever=$(< ${chroot_dir}/etc/yum/vars/releasever)
   majorver=${releasever%%.*}
 
   mv ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo{,.saved}
 
+  baseurl=$(baseurl ${releasever})
+
   cat <<-REPO > ${chroot_dir}/etc/yum.repos.d/CentOS-Base.repo
 	[base]
 	name=CentOS-\$releasever - Base
-	baseurl=http://ftp.riken.jp/Linux/centos/\$releasever/os/\$basearch/
+	baseurl=${baseurl}/\$releasever/os/\$basearch/
 	gpgcheck=1
 	gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-${majorver}
 
 	[updates]
 	name=CentOS-\$releasever - Updates
-	baseurl=http://ftp.riken.jp/Linux/centos/\$releasever/updates/\$basearch/
+	baseurl=${baseurl}/\$releasever/updates/\$basearch/
 	gpgcheck=1
 	gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-${majorver}
 	REPO
