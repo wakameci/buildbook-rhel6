@@ -10,12 +10,11 @@ declare chroot_dir=$1
 function baseurl() {
   local releasever=${1}
 
+  local baseurl=http://vault.centos.org
+
   case "${releasever}" in
     5.10 | 6.5 | 7.0.1406 )
       baseurl=http://ftp.riken.jp/Linux/centos
-      ;;
-    *)
-      baseurl=http://vault.centos.org
       ;;
   esac
 
