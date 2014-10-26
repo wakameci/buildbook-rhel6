@@ -17,10 +17,10 @@ EOS
 configure_sudo_sudoers $1 jenkins NOPASSWD:
 
 chroot $1 $SHELL -ex <<'EOS'
-  chkconfig --list jenkins || {
+  if chkconfig --list jenkins; then
     chkconfig jenkins off
     chkconfig --list jenkins
-  }
+  fi
 EOS
 
 chroot $1 su - jenkins <<'EOS'
