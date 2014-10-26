@@ -12,7 +12,6 @@ chroot $1 $SHELL -ex <<'EOS'
   rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 
   # *** don't install java-1.7.0-openjdk ***
-  yum install --disablerepo=updates -y java-1.6.0-openjdk
   yum install --disablerepo=updates -y jenkins
   # in order to draw graphs/charts
   yum install --disablerepo=updates -y dejavu-sans-fonts
