@@ -15,4 +15,9 @@ chroot $1 $SHELL -ex <<'EOS'
   yum install --disablerepo=updates -y jenkins
   # in order to draw graphs/charts
   yum install --disablerepo=updates -y dejavu-sans-fonts
+
+  # prevent jenkins starting
+  chkconfig --list jenkins
+  chkconfig jenkins off
+  chkconfig --list jenkins
 EOS
