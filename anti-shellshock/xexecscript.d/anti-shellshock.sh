@@ -14,6 +14,6 @@ chroot $1 $SHELL -ex <<'EOS'
     6.5)
       yum update  -y bash ;;
     6.[0-4])
-      yum install -y http://ftp.riken.jp/pub/Linux/centos/6/updates/x86_64/Packages/bash-4.1.2-15.el6_5.2.x86_64.rpm ;;
+      yum install -y http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.5/updates/x86_64/Packages/bash-4.1.2-15.el6_5.2.x86_64.rpm ;;
   esac
 EOS
