@@ -7,6 +7,7 @@
 #  http://www.opscode.com/chef/install/
 #
 set -e
+set -o pipefail
 
 declare chroot_dir=$1
 
