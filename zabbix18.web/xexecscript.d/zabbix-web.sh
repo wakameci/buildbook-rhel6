@@ -4,6 +4,7 @@
 #  bash
 #
 set -e
+set -o pipefail
 
 chroot $1 $SHELL -ex <<EOS
   [[ -n "${zabbix_version}" ]] && {

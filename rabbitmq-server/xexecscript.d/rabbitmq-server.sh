@@ -7,6 +7,7 @@
 #  http://www.rabbitmq.com/releases/rabbitmq-server/current/
 #
 set -e
+set -o pipefail
 
 declare chroot_dir=$1
 

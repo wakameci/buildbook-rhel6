@@ -7,6 +7,7 @@
 #  https://github.com/hashicorp/serf/blob/master/demo/web-load-balancer/setup_serf.sh
 #
 set -e
+set -o pipefail
 
 declare chroot_dir=$1
 

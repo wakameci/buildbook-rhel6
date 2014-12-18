@@ -7,6 +7,7 @@
 # - http://docs.fluentd.org/articles/install-by-rpm
 #
 set -e
+set -o pipefail
 
 # make sure to define td-agent version
 case "${td_agent_version}" in

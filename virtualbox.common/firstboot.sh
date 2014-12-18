@@ -11,6 +11,7 @@
 #  /etc/init.d/vboxdrv
 #
 set -e
+set -o pipefail
 set -x
 
 ## main

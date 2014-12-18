@@ -4,6 +4,7 @@
 #  bash
 #
 set -e
+set -o pipefail
 
 chroot $1 $SHELL -ex <<'EOS'
   curl -fsSkL http://s3tools.org/repo/RHEL_6/s3tools.repo -o /etc/yum.repos.d/s3tools.repo

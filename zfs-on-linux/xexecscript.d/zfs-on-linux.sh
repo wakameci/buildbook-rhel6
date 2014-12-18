@@ -7,6 +7,7 @@
 # - http://zfsonlinux.org/epel.html
 #
 set -e
+set -o pipefail
 
 declare chroot_dir=$1
 
