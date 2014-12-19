@@ -52,16 +52,11 @@ chroot $1 $SHELL -ex <<'EOS'
 EOS
 ```
 
-Test Books
-----------
-
-+ [buidbook-rhel6-test](https://github.com/hansode/buildbook-rhel6-test)
-
 Links
 -----
 
 + [vmbuider](https://github.com/hansode/vmbuilder)
-+ [buildbook-rhel7](https://github.com/hansode/buildbook-rhel7)
++ [buildbook-rhel6](https://github.com/wakameci/buildbook-rhel6)
 
 License
 -------
