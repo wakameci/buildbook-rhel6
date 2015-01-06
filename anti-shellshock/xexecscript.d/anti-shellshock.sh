@@ -21,6 +21,6 @@ chroot $1 $SHELL -ex <<'EOS'
     6.5)
       yum update  -y bash ;;
     6.[0-4])
-      yum install -y http://http://vault.centos.org/6.5/updates/${basearch}/Packages/bash-4.1.2-15.el6_5.2.${arch}.rpm ;;
+      yum install -y http://vault.centos.org/6.5/updates/${basearch}/Packages/bash-4.1.2-15.el6_5.2.${arch}.rpm ;;
   esac
 EOS
