@@ -19,7 +19,12 @@ chroot $1 $SHELL -ex <<'EOS'
 
   case "${releasever}" in
     6.6)
-      yum update  -y glibc ;;
+      yum update  -y \
+        glibc \
+        glibc-common \
+        glibc-devel \
+        glibc-headers
+      ;;
     6.[0-5])
       yum install -y \
         http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.6/updates/${basearch}/Packages/glibc-2.12-1.149.el6_6.5.${arch}.rpm \
