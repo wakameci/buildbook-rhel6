@@ -26,11 +26,22 @@ chroot $1 $SHELL -ex <<'EOS'
         glibc-headers
       ;;
     6.[0-5])
-      yum install -y \
-        http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.6/updates/${basearch}/Packages/glibc-2.12-1.149.el6_6.5.${arch}.rpm \
-        http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.6/updates/${basearch}/Packages/glibc-common-2.12-1.149.el6_6.5.${arch}.rpm \
-        http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.6/updates/${basearch}/Packages/glibc-devel-2.12-1.149.el6_6.5.${arch}.rpm \
-        http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.6/updates/${basearch}/Packages/glibc-headers-2.12-1.149.el6_6.5.${arch}.rpm
+      expected_version=2.12-1.149.el6_6.5
+
+      case "$(rpm -qa --qf '%{Version}-%{Release}\n' glibc)" in
+        ${expected_version})
+          ;;
+        *)
+          base_uri=http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.6/updates/${basearch}/Packages
+
+          yum install -y \
+            ${base_uri}/glibc-${expected_version}.${arch}.rpm \
+            ${base_uri}/glibc-common-${expected_version}.${arch}.rpm \
+            ${base_uri}/glibc-devel-${expected_version}.${arch}.rpm \
+            ${base_uri}/glibc-headers-${expected_version}.${arch}.rpm
+          ;;
+      esac
+
       ;;
   esac
 EOS
