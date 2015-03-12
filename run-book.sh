@@ -24,6 +24,8 @@ cd ${abs_dirname}
 
 # TODO: support copy.txt deployment.
 
+xexecscript="$(find -L ${name} ! -type d -perm -a=x | sort)"
+
 while read line; do
   echo eval ${line} ${chroot_dir}
-done < <(find -L ${name} ! -type d -perm -a=x | sort)
+done <<< "${xexecscript}"
