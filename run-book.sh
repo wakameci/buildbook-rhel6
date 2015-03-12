@@ -100,6 +100,12 @@ xexecscript="$(find -L ${name} ! -type d -perm -a=x | sort)"
 copy="$(find -L ${name} ! -type d -name copy.txt | sort)"
 postcopy="$(find -L ${name} ! -type d -name postcopy.txt | sort)"
 
+cat <<EOS | sed 's,^,# ,'
+       copy: $(echo ${copy})
+   postcopy: $(echo ${postcopy})
+xexecscript: $(echo ${xexecscript})
+EOS
+
 run_copies       ${chroot_dir} ${copy}
 run_xexecscripts ${chroot_dir} ${xexecscript}
 run_copies       ${chroot_dir} ${postcopy}
