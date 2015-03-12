@@ -23,7 +23,6 @@ function run_xexecscript() {
   [[ -x "${xexecscript}" ]] || { echo "[WARN] cannot execute script: ${xexecscript} (${BASH_SOURCE[0]##*/}:${LINENO})" >&2; return 0; }
 
   printf "[INFO] Excecuting script: %s\n" ${xexecscript}
-  [[ -n "${distro_arch}" ]] || add_option_distro
 
   (. ${xexecscript} ${chroot_dir}) || {
     echo "[ERROR] xexecscript failed: exitcode=$? (${BASH_SOURCE[0]##*/}:${LINENO})" >&2
