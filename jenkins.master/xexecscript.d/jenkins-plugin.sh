@@ -40,7 +40,9 @@ chroot $1 $SHELL -ex <<'EOS'
 	nested-view
 	next-executions
 	parameterized-trigger
+	rbenv
 	rebuild
+	ruby-runtime
 	timestamper
 	throttle-concurrents
 	token-macro
