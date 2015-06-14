@@ -11,7 +11,7 @@ set -o pipefail
 
 declare chroot_dir=$1
 
-rabbitmq_server_version=${rabbitmq_server_version:-3.2.1}
+rabbitmq_server_version=${rabbitmq_server_version:-3.5.3}
 
 chroot $1 $SHELL -ex <<EOS
   yum install --disablerepo=updates -y http://www.rabbitmq.com/releases/rabbitmq-server/v${rabbitmq_server_version}/rabbitmq-server-${rabbitmq_server_version}-1.noarch.rpm
