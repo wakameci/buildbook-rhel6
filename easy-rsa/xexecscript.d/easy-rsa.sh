@@ -17,11 +17,12 @@ chroot $1 $SHELL -ex <<'EOS'
   cd /etc/openvpn/easy-rsa
   source ./vars
   ./clean-all
-  ./build-ca
+  sed -i 's/--interactive//g' build-ca
+  sed -i 's/--interactive//g' build-key
   sed -i 's/--interactive//g' build-key-server
+  ./build-ca
   ./build-key-server server
   ./build-dh
   cd /etc/openvpn/easy-rsa/keys
   cp dh1024.pem ca.crt server.crt server.key /etc/openvpn
-  sed -i 's/--interactive//g' build-key
 EOS
