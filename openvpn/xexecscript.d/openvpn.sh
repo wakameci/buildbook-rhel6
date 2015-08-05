@@ -14,5 +14,5 @@ chroot $1 $SHELL -ex <<'EOS'
   sed -i 's/;push \"redirect-gateway def1 bypass-dhcp\"/push \"redirect-gateway def1 bypass-dhcp\"/g' /etc/openvpn/server.conf
   sed -i 's/;push \"dhcp-option/push \"dhcp option/g' /etc/openvpn/server.conf
   sed -i 's/;user nobody/user nobody/g' /etc/openvpn/server.conf
-  sed -i 's/group nobody/group nobody/g' /etc/openvpn/server.conf
+  sed -i 's/;group nobody/group nobody/g' /etc/openvpn/server.conf
 EOS
