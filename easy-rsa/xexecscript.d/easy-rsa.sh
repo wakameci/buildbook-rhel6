@@ -17,9 +17,9 @@ chroot $1 $SHELL -ex <<'EOS'
   cd /etc/openvpn/easy-rsa
   source ./vars
   ./clean-all
-  sed -i 's/--interactive//g' build-ca
-  sed -i 's/--interactive//g' build-key
-  sed -i 's/--interactive//g' build-key-server
+  sed -i 's/--interact//g' build-ca
+  sed -i 's/--interact//g' build-key
+  sed -i 's/--interact//g' build-key-server
   ./build-ca
   ./build-key-server server
   ./build-dh
