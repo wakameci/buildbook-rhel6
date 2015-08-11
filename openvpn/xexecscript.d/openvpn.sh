@@ -15,4 +15,6 @@ chroot $1 $SHELL -ex <<'EOS'
   sed -i 's/;push \"dhcp-option/push \"dhcp option/g' /etc/openvpn/server.conf
   sed -i 's/;user nobody/user nobody/g' /etc/openvpn/server.conf
   sed -i 's/;group nobody/group nobody/g' /etc/openvpn/server.conf
+  sed -i 's/net.ipv4.ip_forward = 0/net.ipv4.ip_forward = 1/g' /etc/sysctl.conf
+  sysctl -p
 EOS
