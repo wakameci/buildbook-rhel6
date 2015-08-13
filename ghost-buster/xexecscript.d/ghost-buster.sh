@@ -38,7 +38,7 @@ chroot $1 $SHELL -ex <<'EOS'
         ${expected_version})
           ;;
         *)
-          base_uri=http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.6/updates/${basearch}/Packages
+          base_uri=http://vault.centos.org/6.6/updates/${basearch}/Packages
 
           yum install -y \
             ${base_uri}/glibc-${expected_version}.${arch}.rpm \
