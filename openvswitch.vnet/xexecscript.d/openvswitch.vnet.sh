@@ -12,15 +12,17 @@ chroot $1 $SHELL -ex <<'EOS'
   releasever=$(< /etc/yum/vars/releasever)
   majorver=${releasever%%.*}
 
-  case "${releasever}" in
-    *)
-      ;;
-  esac
-
   openvswitch_version=2.3.1
 
   repourl=http://dlc.openvnet.axsh.jp/packages/rhel/openvswitch/${releasever}
 
-  yum install --disablerepo=updates -y ${repourl}/kmod-openvswitch-${openvswitch_version}-1.el${majorver}.x86_64.rpm
+  case "${releasever}" in
+    6.7)
+      ;;
+    *)
+      yum install --disablerepo=updates -y ${repourl}/kmod-openvswitch-${openvswitch_version}-1.el${majorver}.x86_64.rpm
+      ;;
+  esac
+
   yum install --disablerepo=updates -y ${repourl}/openvswitch-${openvswitch_version}-1.x86_64.rpm
 EOS
