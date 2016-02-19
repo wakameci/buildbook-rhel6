@@ -14,8 +14,8 @@ chroot $1 $SHELL -ex <<'EOS'
   x86_64) arch=amd64 ;;
   esac
 
-  until curl -fSkL -o /tmp/0.5.0_linux_${arch}.zip https://dl.bintray.com/mitchellh/packer/0.5.0_linux_${arch}.zip; do
-    sleep 1
+  until curl -fSkL -o /tmp/0.5.0_linux_${arch}.zip https://releases.hashicorp.com/packer/0.5.0/packer_0.5.0_linux_${arch}.zip; do
+    sleep 60
   done
 
   mkdir -p /usr/local/packer
